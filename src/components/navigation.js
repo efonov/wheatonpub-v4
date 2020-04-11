@@ -118,22 +118,22 @@ export const Navigation = ({ toggle }) => (
                 <div class="toc-menu">
                     <div class="toc-link-parent">
                         <div class="toc-links">
-                            <StyledLink to="/" class="toc-menu-link" >
+                            <StyledLink to="/">
                                 <div class="toc-menu-link">Home</div>
                             </StyledLink>
-                            <StyledLink to="/about" class="toc-menu-link">
+                            <StyledLink to="/about">
                                 <div class="toc-menu-link">About</div>
                             </StyledLink>
-                            <StyledLink to="/issues" class="toc-menu-link">
+                            <StyledLink to="/issues">
                                 <div class="toc-menu-link">Issues</div>
                             </StyledLink>
-                            <StyledLink to="/blog" class="toc-menu-link">
+                            <StyledLink to="/blog">
                                 <div class="toc-menu-link">Blog</div>
                             </StyledLink>
-                            <StyledLink to="/staff" class="toc-menu-link">
+                            <StyledLink to="/staff">
                                 <div class="toc-menu-link">Staff</div>
                             </StyledLink>
-                            <StyledLink to="/help-out" class="toc-menu-link">
+                            <StyledLink to="/help-out">
                                 <div class="toc-menu-link">Help Out</div>
                             </StyledLink>
                             <div class="final-things"><a href="https://www.instagram.com/wheatonpub/" class="menu-bottom-link w-inline-block">Instagram</a><a href="mailto:wheatonpub@gmail.com" class="menu-bottom-link w-inline-block">Contact</a></div>
