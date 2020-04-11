@@ -118,7 +118,7 @@ export const Navigation = ({ toggle }) => (
                 <div class="toc-menu">
                     <div class="toc-link-parent">
                         <div class="toc-links">
-                            <StyledLink to="/" data-w-id="dea1a3cf-804b-4797-d964-92ab4ff6fd40" aria-current="page" >
+                            <StyledLink to="/" data-w-id="dea1a3cf-804b-4797-d964-92ab4ff6fd40" class="toc-menu-link" >
                                 <div class="toc-menu-link">Home</div>
                             </StyledLink>
                             <StyledLink to="/about" data-w-id="b1817d41-af34-9c46-e9dd-e2e23ef763f4" class="toc-menu-link">
