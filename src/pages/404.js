@@ -1,19 +1,12 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { Layout } from "../components/layout"
-import { withPrefix } from "gatsby"
 import { StyledLink } from "../css/StyledLink.js"
-
-import '../css/webflow.css'
-import '../css/normalize.css'
-import '../css/imported-styles.css'
-import '../css/custom-styles.css'
 
 const NotFoundPage = () => (
   <div class="body">
     <Layout>
       <Helmet>
-        <script src={withPrefix('webflow.js')} type="text/javascript" />
         <title>The Pub - 404</title>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Webflow" name="generator" />

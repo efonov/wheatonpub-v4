@@ -1,13 +1,11 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { Layout } from "../components/layout"
-import { withPrefix } from "gatsby"
 
 const SubmissionsPage = () => (
     <div class="body">
         <Layout>
             <Helmet>
-                <script src={withPrefix('webflow.js')} type="text/javascript" />
                 <title>The Pub - Submissions</title>
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta content="Webflow" name="generator" />

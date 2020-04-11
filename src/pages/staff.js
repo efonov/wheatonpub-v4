@@ -1,7 +1,6 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { Layout } from "../components/layout"
-import { withPrefix, graphql } from "gatsby"
 import Img from 'gatsby-image'
 import { StyledLink } from "../css/StyledLink.js"
 
@@ -32,7 +31,6 @@ const StaffPage = ({ data }) => (
     <div class="body">
         <Layout>
             <Helmet>
-                <script src={withPrefix('webflow.js')} type="text/javascript" />
                 <title>The Pub - Staff</title>
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta content="Webflow" name="generator" />
@@ -55,7 +53,7 @@ const StaffPage = ({ data }) => (
                         <div class="content-grid staff w-dyn-items">
                             {data.allDatoCmsStaffMember.edges.map(({ node: staffMember }) => (
                                 <StyledLink to={`/staff/${staffMember.slug}`}>
-                                    <div key={staffMember.id} class="card w-dyn-item" onHoverStart={() => console.log('Hover starts')}>
+                                    <div key={staffMember.id} class="card w-dyn-item">
                                         <Img id="w-node-dd9d58d9ddea-6a777c53" className="card-cover-image" fluid={staffMember.profilePhoto.fluid} initial='false' />
                                         <div id="w-node-dd9d58d9ddeb-6a777c53" class="card-info">
                                             <div class="card-title staff-name">{staffMember.name}</div>

@@ -4,7 +4,8 @@ import { useRef } from "react";
 import { Navigation, MobileNav } from "./navigation";
 import { StyledLink } from "../css/StyledLink.js"
 
-export const Layout = ({ children }) => {
+
+export const Layout = ({ children, data }) => {
     const { scrollYProgress } = useViewportScroll();
 
     const containerRef = useRef(null);
@@ -24,12 +25,16 @@ export const Layout = ({ children }) => {
                         </StyledLink>
                     </div>
                     <div id="w-node-428e8a752d60-8a752d57" class="header-child">
-                        <a href="submissions.html" class="simple-button w-inline-block">
-                            <div class="button-text">Submit Work</div>
-                        </a>
-                        <a href="https://the-pub.webflow.io/volumes/busyness-and-boredom" class="simple-button fill w-inline-block">
-                            <div class="button-text">Latest Issue</div>
-                        </a>
+                        <StyledLink to={`/submissions`}>
+                            <div class="simple-button w-inline-block">
+                                <div class="button-text">Submit Work</div>
+                            </div>
+                        </StyledLink>
+                        <StyledLink to={`issues/spring-2020`}>
+                            <div class="simple-button fill w-inline-block">
+                                <div class="button-text">Latest Issue</div>
+                            </div>
+                        </StyledLink>
                     </div>
                 </div>
                 <motion.nav ref={containerRef} initial={false} animate={isOpen ? "open" : "closed"}>
@@ -56,11 +61,11 @@ export const Layout = ({ children }) => {
                             </div>
                         </div>
                         <div id="w-node-552eb64915eb-b64915d4" class="footer-column">
-                            <div class="footer-column-name">Issues</div><StyledLink to="/"><div class="footer-link">Latest</div></StyledLink><StyledLink to="/issues"><div class="footer-link">Issues</div></StyledLink></div>
+                            <div class="footer-column-name">Issues</div><StyledLink to={`issues/spring-2020`}><div class="footer-link">Latest Issue</div></StyledLink><StyledLink to="/issues"><div class="footer-link">Archive</div></StyledLink></div>
                         <div id="w-node-552eb64915f2-b64915d4" class="footer-column">
                             <div class="footer-column-name">Information</div><StyledLink to="/about"><div class="footer-link">About</div></StyledLink><StyledLink to="/staff"><div class="footer-link">Staff</div></StyledLink><StyledLink to="/blog"><div class="footer-link">Blog</div></StyledLink></div>
                         <div class="footer-column">
-                            <div class="footer-column-name">Contact</div><StyledLink to="/submissions"><div class="footer-link">Submit Work</div></StyledLink><StyledLink to="/help-out"><div class="footer-link">Support The Pub</div></StyledLink><StyledLink to="/"><div class="footer-link">Staff Applications</div></StyledLink><a href="https://www.instagram.com/wheatonpub/" class="footer-link">Instagram</a><a href="mailto:wheatonpub@gmail.com" class="footer-link">Email</a></div>
+                            <div class="footer-column-name">Contact</div><StyledLink to="/submissions"><div class="footer-link">Submit Work</div></StyledLink><StyledLink to="/help-out"><div class="footer-link">Support The Pub</div></StyledLink><a href="https://www.instagram.com/wheatonpub/" class="footer-link">Instagram</a><a href="mailto:wheatonpub@gmail.com" class="footer-link">Email</a></div>
                         <div id="w-node-552eb649160c-b64915d4" class="final-things-copy">
                             <div class="small-text">Copyright © 2020 The Pub </div>
                             <div class="text-block-9">Website by <a href="http://efonov.com" class="link-2">@efonov</a></div>

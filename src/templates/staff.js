@@ -1,7 +1,6 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { Layout } from "../components/layout"
-import { withPrefix, graphql } from "gatsby"
 import Img from 'gatsby-image'
 import { StyledLink } from "../css/StyledLink.js"
 import styled from "styled-components";
@@ -25,14 +24,31 @@ query StaffTemplateQuery($slug: String!) {
           }
       }
     }
+    allDatoCmsBlogPost(filter: {author: {slug: {eq: $slug}}}) {
+        edges {
+          node {
+            postSummary
+            slug
+            title
+            id
+            author {
+              slug
+              name
+              id
+            }
+            meta {
+              publishedAt(formatString: "MMMM Do, YYYY h:mma")
+            }
+          }
+        }
+      }
   }
 `
 
-export default ({ data }) => (
+const StaffTemplate = ({ data }) => (
     <div class="body">
         <Layout>
             <Helmet>
-                <script src={withPrefix('webflow.js')} type="text/javascript" />
                 <title>The Pub</title>
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta content="Webflow" name="generator" />
@@ -48,8 +64,7 @@ export default ({ data }) => (
             <div data-w-id="63b8498e-1639-aebb-9ce4-f79485e68895" class="page">
                 <section class="page-section content no-space">
                     <div class="card issue template">
-                        <StyledImage fluid={data.datoCmsStaffMember.profilePhoto.fluid} class="card-cover-image staff, staff-outline">
-                        </StyledImage>
+                        <StyledImage fluid={data.datoCmsStaffMember.profilePhoto.fluid} class="card-cover-image staff, staff-outline" />
                         <div id="w-node-b2ddda19fb07-ff869045" class="details">
                             <h1 class="title">{data.datoCmsStaffMember.name}</h1>
                             <div class="issue-info">
@@ -76,25 +91,23 @@ export default ({ data }) => (
                         <div class="post-features">
                             <div class="collection-list-wrapper-2 staff w-dyn-list">
                                 <div class="collection-list w-dyn-items">
-                                    <div class="preview w-dyn-item">
-                                        <div id="w-node-ac71ce6f564b-ff869045" class="card blog">
-                                            <div class="blog-post-link">
-                                                <a href="#" class="link w-inline-block">
-                                                    <h1 class="blog-post-title"></h1>
-                                                </a>
-                                                <p class="post-summary"></p>
-                                                <div class="card-info blog">
-                                                    <div class="author-info">
-                                                        <div class="text-block-12">Written on </div>
-                                                        <div class="text-block-7"></div>
+                                    {data.allDatoCmsBlogPost.edges.map(({ node: post }) => (
+                                        <div key={post.id} class="preview w-dyn-item">
+                                            <div id="w-node-cfa85c07b166-8c3b2b8f" class="card">
+                                                <div class="blog-post-link">
+                                                    <StyledLink to={`/blog/${post.slug}`} class="link w-inline-block">
+                                                        <h1 class="blog-post-title">{post.title}</h1>
+                                                    </StyledLink>
+                                                    <p class="post-summary">{post.postSummary}</p>
+                                                    <div class="card-info blog">
+                                                        <div class="author-info">
+                                                            <div class="text-block-7">{post.meta.publishedAt}</div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="empty-state w-dyn-empty">
-                                    <div>No items found.</div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -103,4 +116,6 @@ export default ({ data }) => (
             </div>
         </Layout>
     </div>
-) 
+)
+
+export default StaffTemplate

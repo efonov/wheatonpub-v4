@@ -1,9 +1,33 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { Layout } from "../components/layout"
+import Img from 'gatsby-image'
 import { withPrefix, graphql } from "gatsby"
+import { StyledLink } from "../css/StyledLink.js"
 
-const IssueTemplate = () => (
+export const query = graphql`
+query IssueQuery($slug: String!) {
+    datoCmsIssue(slug: {eq: $slug}) {
+      slug
+      releaseDate
+      issueTheme
+      contriubtors
+      letterFromTheEditorNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+      identifier
+      coverImage {
+        fluid(maxWidth: 1000, imgixParams: { fm: "jpg", auto: "compress" }) {
+            ...GatsbyDatoCmsSizes
+          }
+      }
+    }
+  }
+`
+
+const IssueTemplate = ({ data }) => (
     <div class="body">
         <Layout>
             <Helmet>
@@ -20,39 +44,41 @@ const IssueTemplate = () => (
                 <link href="images/webclip.png" rel="apple-touch-icon" />
                 <link rel="stylesheet" href="https://use.typekit.net/ggb0fjm.css" />
             </Helmet>
-            <div data-w-id="63b8498e-1639-aebb-9ce4-f79485e68895" class="page">
+            <div class="page">
                 <section class="page-section content">
                     <div class="card issue template">
-                        <a id="w-node-021ecc50ca80-ee869044" href="#" class="image-card w-inline-block">
-                            <div class="card-cover-image issue"></div>
+                        <div class="image-card w-inline-block">
+                            <Img class="card-cover-image issue" fluid={data.datoCmsIssue.coverImage.fluid} initial='false' />
                             <div class="card-info issue">
-                                <div class="card-title"></div>
+                                <div class="card-title">{data.datoCmsIssue.identifier}</div>
                                 <div class="card-subtitle">
-                                    <div class="text-block-7"></div>
+                                    <div class="text-block-7">{data.datoCmsIssue.releaseDate}</div>
                                     <div class="card-subtitle-line"></div>
                                 </div>
                             </div>
-                        </a>
-                        <div id="w-node-021ecc50ca89-ee869044" class="details">
-                            <h1 class="title"></h1>
+                        </div>
+                        <div class="details">
+                            <h1 class="title">{data.datoCmsIssue.issueTheme}</h1>
                             <div class="issue-info">
                                 <div><strong>Contributors:</strong></div>
-                                <div class="contents w-richtext"></div>
+                                <div class="contents w-richtext">{data.datoCmsIssue.contriubtors}</div>
                             </div>
                             <div class="issue-buttons bottom">
-                                <a id="w-node-021ecc50ca9e-ee869044" href="#" class="simple-button fill w-inline-block">
+                                <a href="#" class="simple-button fill w-inline-block">
                                     <div>Read </div>
                                     <div></div>
                                 </a>
-                                <a id="w-node-021ecc50caa3-ee869044" href="archive.html" class="simple-button _2nd w-inline-block">
-                                    <div>Back to Issues</div>
-                                </a>
+                                <StyledLink to="/issues"><div class="simple-button _2nd w-inline-block">
+                                    Back to Issues
+                                </div></StyledLink>
                             </div>
                         </div>
                     </div>
                     <div class="content-body">
                         <div class="small-subtiti"><strong>Letter From The Editor:</strong></div>
-                        <div class="rich-text-block template w-richtext"></div>
+                        <div class="rich-text-block template w-richtext" dangerouslySetInnerHTML={{
+                            __html: data.datoCmsIssue.letterFromTheEditorNode.childMarkdownRemark.html,
+                        }} />
                     </div>
                 </section>
             </div>

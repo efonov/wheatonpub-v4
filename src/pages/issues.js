@@ -1,13 +1,36 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { Layout } from "../components/layout"
-import { withPrefix } from "gatsby"
+import Img from 'gatsby-image'
+import { StyledLink } from "../css/StyledLink"
 
-const AboutPage = () => (
+export const query = graphql`
+query IssuesQuery {
+    allDatoCmsIssue {
+      edges {
+        node {
+          slug
+          releaseDate
+          issueTheme
+          contriubtors
+          coverImage {
+            fluid(maxWidth: 450, imgixParams: {fm: "jpg", auto: "compress"}) {
+                                  ...GatsbyDatoCmsSizes
+
+            }
+          }
+          id
+          identifier
+        }
+      }
+    }
+  }
+`
+
+const IssuesPage = ({ data }) => (
     <div class="body">
         <Layout>
             <Helmet>
-                <script src={withPrefix('webflow.js')} type="text/javascript" />
                 <title>The Pub - Issues</title>
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta content="Webflow" name="generator" />
@@ -20,7 +43,7 @@ const AboutPage = () => (
                 <link href="images/webclip.png" rel="apple-touch-icon" />
                 <link rel="stylesheet" href="https://use.typekit.net/ggb0fjm.css" />
             </Helmet>
-            <div data-w-id="63b8498e-1639-aebb-9ce4-f79485e68895" class="page">
+            <div class="page">
                 <section class="page-section content">
                     <div class="page-heading-parent">
                         <h1 class="large-title">Past Issues.</h1>
@@ -28,25 +51,24 @@ const AboutPage = () => (
                     </div>
                     <div class="collection-list-wrapper w-dyn-list">
                         <div class="content-grid issues w-dyn-items">
-                            <div id="w-node-99ed1da72093-426986d0" class="card issue w-dyn-item">
-                                <a id="w-node-af092f6fe9c0-426986d0" href="#" class="image-card w-inline-block">
-                                    <div class="card-cover-image issue"></div>
-                                    <div class="card-info issue">
-                                        <div class="card-title issue"></div>
-                                        <div class="card-subtitle">
-                                            <div class="text-block-7"></div>
-                                            <div class="card-subtitle-line"></div>
+                            {data.allDatoCmsIssue.edges.map(({ node: issue }) => (
+                                <div key={issue.id} class="card issue w-dyn-item">
+                                    <StyledLink to={`/issues/${issue.slug}`}>                                    <div class="image-card w-inline-block">
+                                        <Img class="card-cover-image issue" fluid={issue.coverImage.fluid} initial='false' />
+                                        <div class="card-info issue">
+                                            <div class="card-title issue">{issue.identifier}</div>
+                                            <div class="card-subtitle">
+                                                <div class="text-block-7">{issue.releaseDate}</div>
+                                                <div class="card-subtitle-line"></div>
+                                            </div>
                                         </div>
+                                    </div></StyledLink>
+                                    <div class="preview"><StyledLink to={`/issues/${issue.slug}`} class="link w-inline-block"><div class="title small">{issue.issueTheme}</div></StyledLink>
+                                        <div class="small-subtiti"><strong>Contributors:</strong></div>
+                                        <div class="contents">{issue.contriubtors}</div>
                                     </div>
-                                </a>
-                                <div id="w-node-03e1f70075f7-426986d0" class="preview"><a href="#" class="title small"></a>
-                                    <div class="small-subtiti"><strong>Contributors:</strong></div>
-                                    <div class="contents w-richtext"></div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="w-dyn-empty">
-                            <div>No items found.</div>
+                            ))}
                         </div>
                     </div>
                 </section>
@@ -54,4 +76,4 @@ const AboutPage = () => (
         </Layout>
     </div>
 )
-export default AboutPage
+export default IssuesPage

@@ -200,16 +200,20 @@ export const MobileNav = ({ toggle }) => (
                             <StyledLink to="/help-out">
                                 <div class="toc-menu-link">Help Out</div>
                             </StyledLink>
-                            <div class="final-things"><a href="https://www.instagram.com/wheatonpub/" class="menu-bottom-link w-inline-block">Instagram</a><a href="mailto:wheatonpub@gmail.com" class="menu-bottom-link w-inline-block">Contact</a></div>
+                            <div class="final-things"><a href="https://www.instagram.com/wheatonpub/" class="menu-bottom-link w-inline-block" style={{ marginRight: 16 + 'px' }}>Instagram</a><a href="mailto:wheatonpub@gmail.com" class="menu-bottom-link w-inline-block">Contact</a></div>
                         </div>
                     </div>
                     <div class="toc-link-parent mobile">
-                        <a href="submissions.html" class="simple-button w-inline-block">
-                            <div>Submit Work</div>
-                        </a>
-                        <a href="index.html" data-w-id="8139caae-a48a-5072-7691-42208ac0775e" class="simple-button fill w-inline-block">
-                            <div>Latest Issue</div>
-                        </a>
+                        <StyledLink to={`/submissions`}>
+                            <div class="simple-button w-inline-block">
+                                <div class="button-text">Submit Work</div>
+                            </div>
+                        </StyledLink>
+                        <StyledLink to={`issues/spring-2020`}>
+                            <div class="simple-button fill w-inline-block">
+                                <div class="button-text">Latest Issue</div>
+                            </div>
+                        </StyledLink>
                     </div>
                 </motion.div>
             </div>

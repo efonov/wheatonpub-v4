@@ -1,7 +1,9 @@
 .header {
     mix-blend-mode: difference
 }
-
+body{
+    margin:0px !important;
+}
 .table-of-contents-parent {
     mix-blend-mode: difference
 }

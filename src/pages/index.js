@@ -2,15 +2,55 @@ import React from "react"
 import Helmet from "react-helmet"
 import { Layout } from "../components/layout"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
-import { withPrefix } from "gatsby"
+import Img from 'gatsby-image'
+import { StyledLink } from "../css/StyledLink"
+export const query = graphql`
+query IndexQuery {
+    allDatoCmsIssue {
+      edges {
+        node {
+          slug
+          releaseDate
+          issueTheme
+          contriubtors
+          coverImage {
+            fluid(maxWidth: 450, imgixParams: {fm: "jpg", auto: "compress"}) {
+                                  ...GatsbyDatoCmsSizes
+
+            }
+          }
+          id
+          identifier
+        }
+      }
+    }
+    allDatoCmsBlogPost(filter: {featured: {eq: true}}) {
+      edges {
+        node {
+          postSummary
+          slug
+          title
+          id
+          author {
+            slug
+            name
+            id
+          }
+          meta {
+            publishedAt(formatString: "MMMM Do, YYYY h:mma")
+          }
+        }
+      }
+    }
+  }
+`
 
 const { scrollYProgress } = useViewportScroll();
-const HomePage = () => (
+const HomePage = ({ data }) => (
   <div class="body">
 
     <Layout>
       <Helmet>
-        <script src={withPrefix('webflow.js')} type="text/javascript" />
         <title>The Pub</title>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Webflow" name="generator" />
@@ -29,14 +69,6 @@ const HomePage = () => (
             <h1 class="heading-2">THE<br />PUB</h1>
             <h1 class="subtitle">Wheaton&#x27;s Independent Undergraduate <br />Academic Journal</h1>
             <h1 class="subtitle-mobile">Wheaton&#x27;s Independent<br />Undergraduate<br />Academic Journal</h1>
-            <div class="toc-link-parent mobile intro">
-              <a href="https://forms.gle/uFxYLDCXFkN1cEsdA" class="simple-button dark w-inline-block">
-                <div>Submit Work</div>
-              </a>
-              <a href="https://the-pub.webflow.io/volumes/busyness-and-boredom" class="simple-button fill dark w-inline-block">
-                <div>Latest Issue</div>
-              </a>
-            </div>
           </section>
           <motion.h1 style={{ scale: useTransform(scrollYProgress, [0.1, 0.6], [0.8, 1.1]) }} id="mission" data-w-id="4047144d-7004-a61d-e858-60c64c48c70a" class="subtitle-paragraph">The Pub is an <span class="highlighted-text">independent</span> journal, <span class="highlighted-text">unhindered</span> by institutional expectations, and designed to fill the spaces that other campus publications leave empty. Put simply, The Pub is by the students, for the students.</motion.h1>
           <div class="rich-text-block w-richtext">
@@ -55,12 +87,16 @@ const HomePage = () => (
             <h1 class="subtitle">Wheaton&#x27;s Independent Undergraduate <br />Academic Journal</h1>
             <h1 class="subtitle-mobile">Wheaton&#x27;s Independent<br />Undergraduate<br />Academic Journal</h1>
             <div class="toc-link-parent mobile intro">
-              <a href="https://forms.gle/uFxYLDCXFkN1cEsdA" class="simple-button dark w-inline-block">
-                <div>Submit Work</div>
-              </a>
-              <a href="https://the-pub.webflow.io/volumes/busyness-and-boredom" class="simple-button fill dark w-inline-block">
-                <div>Latest Issue</div>
-              </a>
+              <StyledLink to={`/submissions`}>
+                <div class="simple-button dark w-inline-block">
+                  <div>Submit Work</div>
+                </div>
+              </StyledLink>
+              <StyledLink to={`issues/spring-2020`}>
+                <div class="simple-button fill dark w-inline-block">
+                  <div>Latest Issue</div>
+                </div>
+              </StyledLink>
             </div>
           </section>
           <motion.h1 style={{ scale: useTransform(scrollYProgress, [0.1, 0.6], [0.8, 1.1]) }} id="mission" data-w-id="4047144d-7004-a61d-e858-60c64c48c70a" class="subtitle-paragraph">The Pub is an <span class="highlighted-text">independent</span> journal, <span class="highlighted-text">unhindered</span> by institutional expectations, and designed to fill the spaces that other campus publications leave empty. Put simply, The Pub is by the students, for the students.</motion.h1>
@@ -86,25 +122,24 @@ const HomePage = () => (
               <div class="featured-issue">
                 <div class="collection-list-wrapper w-dyn-list">
                   <div class="content-grid issues featured w-dyn-items">
-                    <div id="w-node-91cebece6eb9-1486903f" class="card-2 issue featured w-dyn-item">
-                      <div id="w-node-b962f098bf97-1486903f" class="issue-details"><a href="#" class="title small"></a>
-                        <div><strong>Contributors:</strong></div>
-                        <div class="contents w-richtext"></div>
-                      </div>
-                      <a id="w-node-fff9086f9d24-1486903f" href="#" class="issue-card-3 w-inline-block">
-                        <div class="card-cover-image issue"></div>
-                        <div class="card-info issue">
-                          <div class="card-title issue"></div>
-                          <div class="card-subtitle">
-                            <div class="text-block-7"></div>
-                            <div class="card-subtitle-line-2"></div>
-                          </div>
+                    {data.allDatoCmsIssue.edges.map(({ node: issue }) => (
+                      <div id="w-node-91cebece6eb9-1486903f" class="card-2 issue featured w-dyn-item">
+                        <div id="w-node-b962f098bf97-1486903f" class="issue-details"><a href="#" class="title small">{issue.issueTheme}</a>
+                          <div><strong>Contributors:</strong></div>
+                          <div class="contents w-richtext">{issue.contriubtors}</div>
                         </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="empty-state-3 w-dyn-empty">
-                    <div>No items found.</div>
+                        <a id="w-node-fff9086f9d24-1486903f" href="#" class="issue-card-3 w-inline-block">
+                          <div class="card-cover-image issue"><Img class="card-cover-image issue" fluid={issue.coverImage.fluid} initial='false' /></div>
+                          <div class="card-info issue">
+                            <div class="card-title issue">{issue.identifier}</div>
+                            <div class="card-subtitle">
+                              <div class="text-block-7">{issue.releaseDate}</div>
+                              <div class="card-subtitle-line-2"></div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -117,27 +152,26 @@ const HomePage = () => (
               <div class="featured-posts">
                 <div class="home-featured-posts w-dyn-list">
                   <div class="w-dyn-items">
-                    <div class="collection-item-2 w-dyn-item">
-                      <div class="card-2 blog">
-                        <div class="blog-post-link-2">
-                          <a href="#" class="link-3 w-inline-block">
-                            <h1 class="blog-post-title featured"></h1>
-                          </a>
-                          <p class="paragraph preview"></p>
-                          <div class="content-detail">
-                            <div class="text-block-13">by </div>
-                            <a href="#" class="link w-inline-block">
-                              <div class="card-title"></div>
-                            </a>
-                            <div class="text-block-13"> ・ </div>
-                            <div class="text-block-7"></div>
+                    {data.allDatoCmsBlogPost.edges.map(({ node: post }) => (
+                      <div key={post.id} class="preview w-dyn-item">
+                        <div id="w-node-cfa85c07b166-8c3b2b8f" class="card-2 blog">
+                          <div class="blog-post-link">
+                            <StyledLink to={`/blog/${post.slug}`} class="link w-inline-block">
+                              <h1 class="blog-post-title featured">{post.title}</h1>
+                            </StyledLink>
+                            <p class="post-summary">{post.postSummary}</p>
+                            <div class="card-info blog">
+                              <div class="author-info">
+                                <div class="text-block-12" style={{ marginRight: 0.3 + 'em' }}>by</div>
+                                <StyledLink to={`/staff/${post.author.slug}`} class="link"><strong>{post.author.name}</strong></StyledLink>
+                                <div class="text-block-12">—</div>
+                                <div class="text-block-7">{post.meta.publishedAt}</div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <div class="empty-state-6 w-dyn-empty">
-                    <div>No items found.</div>
+                    ))}
                   </div>
                 </div>
               </div>
