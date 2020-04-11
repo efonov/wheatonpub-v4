@@ -7,7 +7,9 @@ body{
 .table-of-contents-parent {
     mix-blend-mode: difference
 }
-
+.text-field{
+    color: #e5e5e5;
+}
 .print-foreground-text {
     mix-blend-mode: difference
 }
