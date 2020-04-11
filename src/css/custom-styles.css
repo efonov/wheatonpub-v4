@@ -41,6 +41,12 @@ body{
 }
 
 @media screen and (max-width:767px) {
+    .header {
+        mix-blend-mode: normal
+    }
+    .table-of-contents-parent {
+        mix-blend-mode: normal
+    }
     .logo {
         padding-left: 0
     }

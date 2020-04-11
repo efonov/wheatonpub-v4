@@ -516,7 +516,7 @@ blockquote {
     display: flex;
     height: 100vh;
     margin-bottom: 95px;
-    padding-top: 65px;
+    padding-top: 95px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
@@ -2540,7 +2540,7 @@ blockquote {
     .div-block {
         width: 100%;
         height: auto;
-        padding-top: 65px;
+        padding-top: 95px;
         -webkit-box-align: start;
         -webkit-align-items: flex-start;
         -ms-flex-align: start;
@@ -2579,6 +2579,7 @@ blockquote {
         cursor: default
     }
     .toc-items-1 {
+        background-color: #1a1a1a;
         z-index: 20;
         display: -webkit-box;
         display: -webkit-flex;
@@ -2813,7 +2814,8 @@ blockquote {
         padding-top: 5px
     }
     .image {
-        height: 40px
+        height: 40px;
+        width:40px
     }
     .further-reading.staff {
         -webkit-align-self: flex-start;
