@@ -175,6 +175,7 @@ blockquote {
 }
 
 .toc-link-parent {
+    font-size: 17px !important;
     position: relative;
     z-index: 100;
     display: -webkit-box;
