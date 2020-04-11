@@ -46,11 +46,11 @@ export const Layout = ({ children, data }) => {
                         <div id="w-node-552eb64915d6-b64915d4" class="grid-container">
                             <div class="title">Wheaton&#x27;s Independent<br />Undergraduate <br />Academic Journal</div>
                             <div class="form-block w-form">
-                                <form id="wf-form-Newsletter-Form" name="wf-form-Newsletter-Form" data-name="Newsletter Form" action="/#" method="post" data-netlify="&quot;true&quot;" class="form">
+                                <form id="wf-form-Newsletter-Form" name="wf-form-Newsletter-Form" data-name="Newsletter Form" method="post" netlify-honeypot="bot-field" data-netlify="true" class="form">
                                     <div href="#support-us" class="link _2">
                                         <div class="text-block-5">Get The Pub newsletter delivered right to your inbox.</div>
                                     </div>
-                                    <div class="div-block-2"><input type="email" class="text-field w-input" maxlength="256" name="email-2" data-name="Email 2" placeholder="Enter your email" id="email-2" required="" /><input type="submit" value="Sign Up" data-wait="Please wait..." class="simple-button fill w-button" /></div>
+                                    <div class="div-block-2"><input type="hidden" class="text-field w-input" maxlength="256" name="bot-field" data-name="Email 2" placeholder="Enter your email" id="email-2" required="" /><button type="submit" class="simple-button fill w-button" >Sign Up</button></div>
                                 </form>
                                 <div class="w-form-done">
                                     <div>Thank you! Your submission has been received!</div>
