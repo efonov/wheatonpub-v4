@@ -2,12 +2,6 @@ import React from "react"
 import Helmet from "react-helmet"
 import { Layout } from "../components/layout"
 import { withPrefix } from "gatsby"
-import { StyledLink } from "../css/StyledLink.js"
-
-import '../css/webflow.css'
-import '../css/normalize.css'
-import '../css/imported-styles.css'
-import '../css/custom-styles.css'
 
 const SubmissionsPage = () => (
     <div class="body">

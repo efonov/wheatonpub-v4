@@ -1,9 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { Layout } from "../components/layout"
-import { withPrefix, graphql } from "gatsby"
-import Img from 'gatsby-image'
-import { StyledLink } from "../css/StyledLink.js"
+import { withPrefix } from "gatsby"
 
 const PostTemplate = () => (
     <div class="body">

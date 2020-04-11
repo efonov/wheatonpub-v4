@@ -1,15 +1,9 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { Layout } from "../components/layout"
-import { motion } from "framer-motion"
 import { withPrefix, graphql } from "gatsby"
 import Img from 'gatsby-image'
 import { StyledLink } from "../css/StyledLink.js"
-
-import '../css/webflow.css'
-import '../css/normalize.css'
-import '../css/imported-styles.css'
-import '../css/custom-styles.css'
 
 export const query = graphql`
 query StaffQuery {
