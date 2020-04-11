@@ -118,22 +118,22 @@ export const Navigation = ({ toggle }) => (
                 <div class="toc-menu">
                     <div class="toc-link-parent">
                         <div class="toc-links">
-                            <StyledLink to="/" data-w-id="dea1a3cf-804b-4797-d964-92ab4ff6fd40" class="toc-menu-link" >
+                            <StyledLink to="/" class="toc-menu-link" >
                                 <div class="toc-menu-link">Home</div>
                             </StyledLink>
-                            <StyledLink to="/about" data-w-id="b1817d41-af34-9c46-e9dd-e2e23ef763f4" class="toc-menu-link">
+                            <StyledLink to="/about" class="toc-menu-link">
                                 <div class="toc-menu-link">About</div>
                             </StyledLink>
-                            <StyledLink to="/issues" data-w-id="76a390ac-1f16-fa09-281b-51f857295e7d" class="toc-menu-link">
+                            <StyledLink to="/issues" class="toc-menu-link">
                                 <div class="toc-menu-link">Issues</div>
                             </StyledLink>
-                            <StyledLink to="/blog" data-w-id="dea1a3cf-804b-4797-d964-92ab4ff6fd43" class="toc-menu-link">
+                            <StyledLink to="/blog" class="toc-menu-link">
                                 <div class="toc-menu-link">Blog</div>
                             </StyledLink>
-                            <StyledLink to="/staff" data-w-id="dea1a3cf-804b-4797-d964-92ab4ff6fd4c" class="toc-menu-link">
+                            <StyledLink to="/staff" class="toc-menu-link">
                                 <div class="toc-menu-link">Staff</div>
                             </StyledLink>
-                            <StyledLink to="/help-out" data-w-id="dea1a3cf-804b-4797-d964-92ab4ff6fd4f" class="toc-menu-link">
+                            <StyledLink to="/help-out" class="toc-menu-link">
                                 <div class="toc-menu-link">Help Out</div>
                             </StyledLink>
                             <div class="final-things"><a href="https://www.instagram.com/wheatonpub/" class="menu-bottom-link w-inline-block">Instagram</a><a href="mailto:wheatonpub@gmail.com" class="menu-bottom-link w-inline-block">Contact</a></div>
