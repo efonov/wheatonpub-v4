@@ -163,7 +163,7 @@ blockquote {
 }
 
 .toc-menu-link {
-    padding-top: .5em !important;
+    padding-top: 10px !important;
     color: #e5e5e5;
     font-size: 34px !important;
     line-height: 34px !important;
