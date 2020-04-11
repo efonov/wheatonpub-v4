@@ -17,7 +17,7 @@ export const Layout = ({ children }) => {
                 {children}
                 <div class="header">
                     <div id="w-node-428e8a752d58-8a752d57">
-                        <StyledLink to="/" class="link-block-2">
+                        <StyledLink to="/">
                             <div class="logo">
                                 <strong><em>THE <br />PUB</em></strong>
                             </div>
