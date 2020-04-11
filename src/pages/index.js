@@ -4,11 +4,11 @@ import { Layout } from "../components/layout"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 import { withPrefix } from "gatsby"
 
-import '../css/webflow.css'
-import '../css/normalize.css'
 import '../css/imported-styles.css'
 import '../css/custom-styles.css'
 
+import '../css/webflow.css'
+import '../css/normalize.css'
 
 const { scrollYProgress } = useViewportScroll();
 const HomePage = () => (
