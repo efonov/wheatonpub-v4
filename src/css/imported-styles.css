@@ -2379,12 +2379,6 @@ blockquote {
     .header-logo:hover {
         text-decoration: underline
     }
-    .header-logo.w--current {
-        font-family: 'LTC Kennerley Pro', sans-serif;
-        font-style: italic;
-        font-weight: 700;
-        text-transform: uppercase
-    }
     .page {
         margin-left: 0
     }
@@ -2464,17 +2458,8 @@ blockquote {
         -ms-flex-pack: start;
         justify-content: flex-start
     }
-    .simple-button.fill.w--current {
-        -webkit-align-self: center;
-        -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center
-    }
     .simple-button.fill.dark {
         margin-bottom: 0;
-        border-color: #1a1a1a
-    }
-    .simple-button.fill.dark.w--current {
         border-color: #1a1a1a
     }
     .simple-button.dark {
@@ -2789,12 +2774,6 @@ blockquote {
         -ms-flex-pack: start;
         justify-content: flex-start
     }
-    .simple-button-2.fill.w--current {
-        -webkit-align-self: center;
-        -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center
-    }
     .card-2.issue {
         grid-row-gap: 20px;
         -ms-grid-columns: .25fr 1fr;
@@ -2904,12 +2883,6 @@ blockquote {
         -ms-flex: 0 auto;
         flex: 0 auto
     }
-    .simple-button.fill.w--current {
-        -webkit-box-flex: 0;
-        -webkit-flex: 0 auto;
-        -ms-flex: 0 auto;
-        flex: 0 auto
-    }
     .simple-button.fill.trailing {
         margin-top: 16px;
         margin-left: 0;
@@ -2923,16 +2896,6 @@ blockquote {
         -webkit-flex: 0 0 auto;
         -ms-flex: 0 0 auto;
         flex: 0 0 auto
-    }
-    .simple-button.fill.dark.w--current {
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-flex: 0;
-        -webkit-flex: 0 auto;
-        -ms-flex: 0 auto;
-        flex: 0 auto
     }
     .simple-button.fill.leading {
         -webkit-box-pack: start;
@@ -3155,12 +3118,6 @@ blockquote {
         -webkit-flex: 1;
         -ms-flex: 1;
         flex: 1
-    }
-    .simple-button-2.fill.w--current {
-        -webkit-box-flex: 0;
-        -webkit-flex: 0 auto;
-        -ms-flex: 0 auto;
-        flex: 0 auto
     }
     .card-2.issue {
         grid-column-gap: 16px;
