@@ -1,6 +1,6 @@
 import React from "react"
 import Helmet from "react-helmet"
-import { Layout } from "../components/Layout"
+import { Layout } from "../components/layout"
 import { motion } from "framer-motion"
 import { withPrefix, graphql } from "gatsby"
 import Img from 'gatsby-image'
