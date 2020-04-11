@@ -150,7 +150,7 @@ export const MobileNav = ({ toggle }) => (
         <div className="table-of-contents-parent">
             <div class="table-of-contents">
                 <div data-w-id="dea1a3cf-804b-4797-d964-92ab4ff6fd1f" class="toc-items-1">
-                    <div class="toc-child"><StyledLink to="/" aria-current="page" class="header-logo w--current"><div class="logo">THE<br />PUB</div></StyledLink></div>
+                    <div class="toc-child"><StyledLink to="/" class="header-logo"><div class="logo">THE<br />PUB</div></StyledLink></div>
                     <div onClick={toggle} className="toc-child">
                         <motion.svg whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }} width="30" height="35" viewBox="0 0 35 35">
                             <Path
@@ -207,7 +207,7 @@ export const MobileNav = ({ toggle }) => (
                         <a href="submissions.html" class="simple-button w-inline-block">
                             <div>Submit Work</div>
                         </a>
-                        <a href="index.html" data-w-id="8139caae-a48a-5072-7691-42208ac0775e" aria-current="page" class="simple-button fill w-inline-block w--current">
+                        <a href="index.html" data-w-id="8139caae-a48a-5072-7691-42208ac0775e" class="simple-button fill w-inline-block">
                             <div>Latest Issue</div>
                         </a>
                     </div>
